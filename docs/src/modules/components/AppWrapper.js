@@ -55,7 +55,8 @@ class AppWrapper extends React.Component<any, any> {
   componentWillReceiveProps(nextProps) {
     if (
       nextProps.uiTheme.paletteType !== this.props.uiTheme.paletteType ||
-      nextProps.uiTheme.direction !== this.props.uiTheme.direction
+      nextProps.uiTheme.direction !== this.props.uiTheme.direction ||
+      nextProps.uiTheme.customTheme !== this.props.uiTheme.customTheme
     ) {
       this.styleContext.theme = getTheme(nextProps.uiTheme);
 

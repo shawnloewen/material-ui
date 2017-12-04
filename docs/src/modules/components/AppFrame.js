@@ -13,6 +13,7 @@ import Toolbar from 'material-ui/Toolbar';
 import IconButton from 'material-ui/IconButton';
 import Tooltip from 'material-ui/Tooltip';
 import MenuIcon from 'material-ui-icons/Menu';
+import CompareArrows from 'material-ui-icons/CompareArrows';
 import LightbulbOutline from 'material-ui-icons/LightbulbOutline';
 import FormatTextdirectionLToR from 'material-ui-icons/FormatTextdirectionLToR';
 import FormatTextdirectionRToL from 'material-ui-icons/FormatTextdirectionRToL';
@@ -175,6 +176,15 @@ class AppFrame extends React.Component<any, any> {
     });
   };
 
+  handleToggleTheme = () => {
+    this.props.dispatch({
+      type: actionTypes.THEME_CHANGE_THEME,
+      payload: {
+        customTheme: !this.props.uiTheme.customTheme,
+      },
+    });
+  };
+
   render() {
     const { children, classes, uiTheme } = this.props;
     const title =
@@ -212,6 +222,15 @@ class AppFrame extends React.Component<any, any> {
             )}
             <div className={classes.grow} />
             <AppSearch />
+            <Tooltip title="Toggle custom theme" enterDelay={300}>
+              <IconButton
+                color="contrast"
+                aria-label="change custom theme"
+                onClick={this.handleToggleTheme}
+              >
+                <CompareArrows />
+              </IconButton>
+            </Tooltip>
             <Tooltip title="Toggle light/dark theme" enterDelay={300}>
               <IconButton
                 color="contrast"
